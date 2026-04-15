@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Result Calculator</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#1f4037,#99f2c8);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+width:350px;
+text-align:center;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+input{
+padding:8px;
+margin:10px;
+width:80%;
+}
+
+button{
+padding:10px 15px;
+border:none;
+background:#1f4037;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+.result{
+margin-top:20px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Result Calculator</h2>
+
+<input type="number" id="subjects" placeholder="Enter number of subjects">
+
+<br>
+
+<button onclick="calculateResult()">Enter Marks</button>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<script>
+
+function calculateResult(){
+
+let n = Number(document.getElementById("subjects").value);
+
+let total = 0;
+let result = "Pass";
+
+let obtainedMarks = "";
+
+for(let i=1;i<=n;i++){
+
+let marks = Number(prompt("Enter marks for Subject " + i));
+
+obtainedMarks += "Subject " + i + ": " + marks + "<br>";
+
+total += marks;
+
+if(marks < 40){
+result = "Failed";
+}
+
+}
+
+let percentage = total / n;
+
+let grade;
+
+if(percentage >= 90){
+grade = "A+";
+}
+else if(percentage >= 75){
+grade = "A";
+}
+else if(percentage >= 60){
+grade = "B";
+}
+else if(percentage >= 50){
+grade = "C";
+}
+else if(percentage >= 40){
+grade = "D";
+}
+else{
+grade = "F";
+}
+
+document.getElementById("output").innerHTML =
+
+
+
+"Total Marks: " + total + "<br>" +
+"Percentage: " + percentage.toFixed(2) + "%<br>" +
+"Grade: " + grade + "<br>" +
+"Result: " + result;
+
+}
+
+</script>
+
+</body>
+</html>
