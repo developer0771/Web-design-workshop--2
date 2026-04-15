@@ -6,44 +6,161 @@
     <title>Document</title>
 </head>
 <body>
-    <h2 id ="demo">Hello student</h2>
+    <h2 id="demo">JavaScript Patterns (1–7)</h2>
+    <pre id="output" style="font-family: monospace; font-size: 16px; line-height: 1.3;"></pre>
+
     <script>
-        let marks = 75;
-        if(marks>=50){
-            console.log("pass");
-        }else{
-            console.log("fail")
+        const N = 5;
+        const out = document.getElementById("output");
+
+        function print(title, text) {
+            const block = `--- ${title} ---\n${text}\n`;
+            out.textContent += block + "\n";
+            console.log(block);
         }
 
-        case 1;
-        let day = 3
-        console.log("Monday");
-        break;
-        case 2;
-        let day = 3
-        console.log("Tuesday");
-        break;
-        case 3;
-        let day = 3
-        console.log("Wednesday");
-        break;
-        case 4;
-        let day = 3
-        console.log("Thursday");
-        break;
-        case 5;
-        let day = 3
-        console.log("Friday");
-        break;
-        case 6;
-        let day = 3
-        console.log("Saturday");
-        break;
-        case 7;
-        let day = 3
-        console.log("Sunday");
-        break;
+        // 1. Right triangle (stars)
+        // *
+        // * *
+        // * * *
+        let p1 = "";
+        for (let i = 1; i <= N; i++) {
+            for (let j = 1; j <= i; j++) p1 += "* ";
+            p1 += "\n";
+        }
+        print("Pattern 1: Right Triangle", p1);
 
+        // 2. Inverted right triangle
+        let p2 = "";
+        for (let i = N; i >= 1; i--) {
+            for (let j = 1; j <= i; j++) p2 += "* ";
+            p2 += "\n";
+        }
+        print("Pattern 2: Inverted Right Triangle", p2);
+
+        // 3. Centered pyramid
+        //     *
+        //    * *
+        //   * * *
+        let p3 = "";
+        for (let i = 1; i <= N; i++) {
+            p3 += " ".repeat(N - i);
+            for (let j = 1; j <= i; j++) p3 += "* ";
+            p3 += "\n";
+        }
+        print("Pattern 3: Pyramid", p3);
+
+        // 4. Inverted pyramid
+        let p4 = "";
+        for (let i = N; i >= 1; i--) {
+            p4 += " ".repeat(N - i);
+            for (let j = 1; j <= i; j++) p4 += "* ";
+            p4 += "\n";
+        }
+        print("Pattern 4: Inverted Pyramid", p4);
+
+        // 5. Diamond
+        let p5 = "";
+        for (let i = 1; i <= N; i++) {
+            p5 += " ".repeat(N - i);
+            for (let j = 1; j <= i; j++) p5 += "* ";
+            p5 += "\n";
+        }
+        for (let i = N - 1; i >= 1; i--) {
+            p5 += " ".repeat(N - i);
+            for (let j = 1; j <= i; j++) p5 += "* ";
+            p5 += "\n";
+        }
+        print("Pattern 5: Diamond", p5);
+
+        // 6. Number triangle
+        // 1
+        // 1 2
+        // 1 2 3
+        let p6 = "";
+        for (let i = 1; i <= N; i++) {
+            for (let j = 1; j <= i; j++) p6 += j + " ";
+            p6 += "\n";
+        }
+        print("Pattern 6: Number Triangle", p6);
+
+        // 7. Floyd's triangle (continuous numbers)
+        // 1
+        // 2 3
+        // 4 5 6
+        let p7 = "";
+        let num = 1;
+        for (let i = 1; i <= N; i++) {
+            for (let j = 1; j <= i; j++) {
+                p7 += num + " ";
+                num++;
+            }
+            p7 += "\n";
+        }
+        print("Pattern 7: Floyd's Triangle", p7);
+
+        // 8. Hollow square
+        let p8 = "";
+        for (let i = 1; i <= N; i++) {
+            for (let j = 1; j <= N; j++) {
+                if (i === 1 || i === N || j === 1 || j === N) p8 += "* ";
+                else p8 += "  ";
+            }
+            p8 += "\n";
+        }
+        print("Pattern 8: Hollow Square", p8);
+
+        // 9. Hollow pyramid
+        let p9 = "";
+        for (let i = 1; i <= N; i++) {
+            p9 += " ".repeat(N - i);
+            for (let j = 1; j <= i; j++) {
+                if (i === N || j === 1 || j === i) p9 += "* ";
+                else p9 += "  ";
+            }
+            p9 += "\n";
+        }
+        print("Pattern 9: Hollow Pyramid", p9);
+
+        // 10. Alphabet triangle
+        // A
+        // A B
+        // A B C
+        let p10 = "";
+        for (let i = 1; i <= N; i++) {
+            for (let j = 0; j < i; j++) p10 += String.fromCharCode(65 + j) + " ";
+            p10 += "\n";
+        }
+        print("Pattern 10: Alphabet Triangle", p10);
+
+        // 11. Pascal's triangle
+        let p11 = "";
+        for (let i = 0; i < N; i++) {
+            p11 += " ".repeat((N - i) * 2);
+            let val = 1;
+            for (let j = 0; j <= i; j++) {
+                p11 += val.toString().padStart(3, " ") + " ";
+                val = val * (i - j) / (j + 1);
+            }
+            p11 += "\n";
+        }
+        print("Pattern 11: Pascal's Triangle", p11);
+
+        // 12. Butterfly
+        let p12 = "";
+        for (let i = 1; i <= N; i++) {
+            for (let j = 1; j <= i; j++) p12 += "* ";
+            p12 += "  ".repeat(2 * (N - i));
+            for (let j = 1; j <= i; j++) p12 += "* ";
+            p12 += "\n";
+        }
+        for (let i = N; i >= 1; i--) {
+            for (let j = 1; j <= i; j++) p12 += "* ";
+            p12 += "  ".repeat(2 * (N - i));
+            for (let j = 1; j <= i; j++) p12 += "* ";
+            p12 += "\n";
+        }
+        print("Pattern 12: Butterfly", p12);
     </script>
 
 </body>
