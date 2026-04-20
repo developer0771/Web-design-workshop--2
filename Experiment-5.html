@@ -203,12 +203,12 @@
 
   function totalSalary() {
     if (employees.length === 0) {
-      render('Total Salary', []);
+      render('Total Salary Payout', []);
       return;
     }
     const total = employees.reduce((sum, e) => sum + e.salary, 0);
     out.innerHTML =
-      '<h2>Total Salary: ₹' + total + '</h2>';
+      '<h2>Total Salary Payout: ₹' + total + '</h2>';
   }
 
   function averageSalary() {
