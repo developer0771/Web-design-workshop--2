@@ -1,12 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>React Props Example</title>
+<meta charset="UTF-8">
+<title>Student Information</title>
 
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    padding: 30px;
+  }
+
+  .container {
+    border: 1px solid #b0b4b8;
+    border-radius: 4px;
+    padding: 18px;
+    width: 240px;
+  }
+
+  .title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #18324a;
+    margin-bottom: 14px;
+    padding-left: 4px;
+  }
+
+  .student-card {
+    border: 1px solid #d8dcdf;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 14px 10px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .student-card:last-child { margin-bottom: 0; }
+
+  .student-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #18324a;
+    margin-bottom: 10px;
+  }
+
+  .student-detail {
+    font-size: 0.72rem;
+    color: #2a2a2a;
+    margin-bottom: 6px;
+  }
+
+  .student-detail:last-child { margin-bottom: 0; }
+</style>
 </head>
 
 <body>
@@ -15,22 +66,31 @@
 
 <script type="text/babel">
 
-function Welcome(props){
-   return <h2>Hello {props.name}</h2>;
-}
-
-function App(){
-   return(
-      <div>
-        <Welcome name="Rahul" />
-        <Welcome name="Anita" />
-        <Welcome name="Rohan" />
+  // Functional component receiving props: name, course, marks
+  function Student(props) {
+    return (
+      <div className="student-card">
+        <div className="student-name">{props.name}</div>
+        <div className="student-detail">Course: {props.course}</div>
+        <div className="student-detail">Marks: {props.marks}</div>
       </div>
-   );
-}
+    );
+  }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+  function App() {
+    return (
+      <div className="container">
+        <div className="title">Student Information</div>
+
+        <Student name="Rahul Sharma" course="Computer Science"      marks={85} />
+        <Student name="Anita Verma"  course="Information Technology" marks={92} />
+        <Student name="Rohan Gupta"  course="Electronics"            marks={78} />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
 
 </script>
 
