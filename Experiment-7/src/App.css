@@ -1,0 +1,49 @@
+body {
+  background: #ffffff;
+  padding: 30px;
+}
+
+.container {
+  border: 1px solid #b0b4b8;
+  border-radius: 4px;
+  padding: 18px;
+  width: 240px;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #18324a;
+  margin-bottom: 14px;
+  padding-left: 4px;
+}
+
+.student-card {
+  border: 1px solid #d8dcdf;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 14px 10px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.student-card:last-child {
+  margin-bottom: 0;
+}
+
+.student-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #18324a;
+  margin-bottom: 10px;
+}
+
+.student-detail {
+  font-size: 0.72rem;
+  color: #2a2a2a;
+  margin-bottom: 6px;
+}
+
+.student-detail:last-child {
+  margin-bottom: 0;
+}
