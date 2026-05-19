@@ -10,124 +10,175 @@
   >
   <style>
     body {
-      background: #f4f6f8;
+      background: #ffffff;
       color: #1f2933;
       font-family: Arial, sans-serif;
       min-height: 100vh;
+      padding: 30px 12px;
+    }
+
+    .store-frame {
+      background: #f8f9fa;
+      border: 2px solid #111111;
+      margin: 0 auto;
+      max-width: 700px;
+      width: 100%;
     }
 
     .navbar {
-      min-height: 72px;
+      min-height: 41px;
+      padding: 0;
+    }
+
+    .navbar .container {
+      max-width: 570px;
     }
 
     .navbar-brand {
-      font-size: 1.25rem;
+      font-size: 0.78rem;
       font-weight: 700;
     }
 
     .nav-link {
+      font-size: 0.58rem;
       font-weight: 500;
+      padding-left: 0.38rem;
+      padding-right: 0.38rem;
     }
 
     .products {
-      padding: 54px 0 70px;
+      background: #f8f9fa;
+      min-height: 324px;
+      padding: 31px 0 47px;
+    }
+
+    .products .container {
+      max-width: 570px;
     }
 
     .product-card {
       border: 1px solid #d7dde3;
-      border-radius: 6px;
-      height: 100%;
+      border-radius: 4px;
+      height: 246px;
       overflow: hidden;
     }
 
     .product-card img {
-      aspect-ratio: 4 / 3;
       background: #ffffff;
+      height: 137px;
       object-fit: contain;
-      padding: 20px;
+      padding: 10px 8px 3px;
       width: 100%;
+    }
+
+    .card-body {
+      padding: 0 9px 12px;
     }
 
     .card-title {
       color: #111111;
-      font-size: 1.15rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
 
     .card-text {
       color: #4b5563;
-      font-size: 0.95rem;
-      margin-bottom: 14px;
+      font-size: 0.58rem;
+      line-height: 1.35;
+      margin-bottom: 10px;
     }
 
     .price-row {
       align-items: center;
       display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
+      gap: 4px;
+      margin-bottom: 8px;
     }
 
     .price {
       color: #111111;
+      font-size: 0.62rem;
       font-weight: 700;
+    }
+
+    .badge {
+      border-radius: 4px;
+      font-size: 0.48rem;
+      padding: 0.3em 0.45em;
+    }
+
+    .btn-primary {
+      border-radius: 4px;
+      font-size: 0.67rem;
+      padding: 4px 8px;
     }
 
     footer {
       background: #212529;
       color: #ffffff;
-      padding: 22px 12px;
+      font-size: 0.62rem;
+      padding: 11px 12px;
       text-align: center;
     }
 
     @media (max-width: 575.98px) {
+      body {
+        padding: 12px;
+      }
+
       .products {
         padding: 28px 0 42px;
+      }
+
+      .product-card {
+        height: auto;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">TechStore</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#techStoreNavbar"
-        aria-controls="techStoreNavbar"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="techStoreNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#products">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+  <div class="store-frame">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">TechStore</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#techStoreNavbar"
+          aria-controls="techStoreNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="techStoreNavbar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <main class="products" id="products">
-    <div class="container">
-      <div class="row g-4 justify-content-center">
-        <div class="col-sm-12 col-md-6 col-lg-4">
+    <main class="products" id="products">
+      <div class="container">
+        <div class="row g-3 justify-content-center">
+          <div class="col-sm-12 col-md-4">
           <div class="card product-card">
             <img
-              src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80"
+              src="assets/experiment-2/laptop.png"
               class="card-img-top"
               alt="Laptop"
             >
@@ -135,7 +186,7 @@
               <h2 class="card-title">Laptop</h2>
               <p class="card-text">High performance laptop</p>
               <div class="price-row">
-                <span class="price">Rs. 50,000</span>
+                <span class="price">₹50,000</span>
                 <span class="badge text-bg-success">New</span>
               </div>
               <button
@@ -145,7 +196,7 @@
                 data-bs-target="#productModal"
                 data-product="Laptop"
                 data-description="A high performance laptop for study, coding, and professional work."
-                data-price="Rs. 50,000"
+                data-price="₹50,000"
               >
                 View Details
               </button>
@@ -153,10 +204,10 @@
           </div>
         </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="col-sm-12 col-md-4">
           <div class="card product-card">
             <img
-              src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80"
+              src="assets/experiment-2/mobile.png"
               class="card-img-top"
               alt="Mobile"
             >
@@ -164,7 +215,7 @@
               <h2 class="card-title">Mobile</h2>
               <p class="card-text">Latest smartphone</p>
               <div class="price-row">
-                <span class="price">Rs. 30,000</span>
+                <span class="price">₹30,000</span>
                 <span class="badge text-bg-danger">Sale</span>
               </div>
               <button
@@ -174,7 +225,7 @@
                 data-bs-target="#productModal"
                 data-product="Mobile"
                 data-description="A latest smartphone with a clear display, fast processor, and modern design."
-                data-price="Rs. 30,000"
+                data-price="₹30,000"
               >
                 View Details
               </button>
@@ -182,10 +233,10 @@
           </div>
         </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="col-sm-12 col-md-4">
           <div class="card product-card">
             <img
-              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+              src="assets/experiment-2/headphones.png"
               class="card-img-top"
               alt="Headphones"
             >
@@ -193,7 +244,7 @@
               <h2 class="card-title">Headphones</h2>
               <p class="card-text">Noise cancelling</p>
               <div class="price-row">
-                <span class="price">Rs. 5,000</span>
+                <span class="price">₹5,000</span>
                 <span class="badge text-bg-success">New</span>
               </div>
               <button
@@ -203,7 +254,7 @@
                 data-bs-target="#productModal"
                 data-product="Headphones"
                 data-description="Comfortable noise cancelling headphones for music, calls, and online classes."
-                data-price="Rs. 5,000"
+                data-price="₹5,000"
               >
                 View Details
               </button>
@@ -211,12 +262,13 @@
           </div>
         </div>
       </div>
-    </div>
-  </main>
+      </div>
+    </main>
 
-  <footer>
-    &copy; 2026 TechStore | Follow us on social media
-  </footer>
+    <footer>
+      &copy; 2026 TechStore | Follow us on social media
+    </footer>
+  </div>
 
   <div
     class="modal fade"
