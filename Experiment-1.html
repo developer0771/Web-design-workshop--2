@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Web Page using Bootstrap Grid System</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 28px auto;
+      border: 2px solid #111111;
+      background: #ffffff;
+    }
+
+    .site-header {
+      background: #347fdf;
+      color: #ffffff;
+      padding: 52px 20px;
+      text-align: center;
+    }
+
+    .site-header h1 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .navbar {
+      padding: 0;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .navbar-brand {
+      padding-left: 12px;
+    }
+
+    .nav-link:hover,
+    .navbar-brand:hover {
+      color: #dbeafe;
+    }
+
+    .content-section {
+      background: #eeeeee;
+      min-height: 210px;
+      padding: 36px 28px;
+    }
+
+    .content-box {
+      padding: 18px 24px;
+    }
+
+    .content-box h2 {
+      color: #111111;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .content-box p {
+      color: #222222;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .divider {
+      border-left: 2px solid #222222;
+    }
+
+    .site-footer {
+      background: #2b2b2b;
+      color: #ffffff;
+      font-size: 0.9rem;
+      padding: 16px;
+      text-align: center;
+    }
+
+    @media (max-width: 767.98px) {
+      .page-wrapper {
+        margin: 12px;
+      }
+
+      .site-header {
+        padding: 36px 16px;
+      }
+
+      .site-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .content-section {
+        padding: 18px 14px;
+      }
+
+      .content-box {
+        padding: 18px 10px;
+      }
+
+      .divider {
+        border-left: 0;
+        border-top: 2px solid #222222;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="site-header">
+      <h1>My Website</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Website</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid content-section">
+      <div class="row align-items-center">
+        <section class="col-sm-12 col-md-6 col-lg-6 content-box">
+          <h2>Column 1</h2>
+          <p>
+            This is the first column. On small devices the column occupies full
+            width, while on medium and large devices it occupies half width
+            using Bootstrap grid classes.
+          </p>
+        </section>
+
+        <section class="col-sm-12 col-md-6 col-lg-6 content-box divider">
+          <h2>Column 2</h2>
+          <p>
+            This is the second column. Bootstrap grid system helps to create
+            responsive layout.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Copyright &copy; 2026 My Website
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
