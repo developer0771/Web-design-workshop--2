@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiment 11 - Creating REST API using Spring Boot</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #eef3f7;
+    color: #1f2933;
+    font-family: Arial, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+    padding: 30px;
+  }
+
+  .page {
+    background: #ffffff;
+    border: 1px solid #d8e0e8;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(31, 41, 51, 0.12);
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 34px;
+  }
+
+  h1 {
+    color: #0b3d5f;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .subtitle {
+    color: #52616f;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  section {
+    border-top: 1px solid #dce4ec;
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  h2 {
+    color: #153e52;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    color: #243b53;
+    font-size: 1.05rem;
+    margin: 18px 0 8px;
+  }
+
+  p,
+  li,
+  td,
+  th {
+    font-size: 0.98rem;
+  }
+
+  ul,
+  ol {
+    padding-left: 24px;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-top: 14px;
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background: #e8f0f7;
+    color: #153e52;
+  }
+
+  .code-block,
+  .output {
+    background: #111827;
+    border-radius: 8px;
+    color: #f9fafb;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.88rem;
+    margin-top: 14px;
+    overflow-x: auto;
+    padding: 18px;
+    white-space: pre;
+  }
+
+  .output {
+    background: #f4f7fa;
+    border: 1px solid #d8e0e8;
+    color: #17202a;
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <h1>Experiment 11</h1>
+  <p class="subtitle">Creating REST API using Spring Boot</p>
+
+  <section>
+    <h2>Problem Statement</h2>
+    <p>
+      Create a Spring Boot application and expose REST endpoints using
+      <strong>@RestController</strong>. Build a Student Management REST API
+      that returns a welcome message, returns student details using a GET
+      request, and accepts student data using a POST request.
+    </p>
+  </section>
+
+  <section>
+    <h2>Objectives</h2>
+    <ul>
+      <li>Create a Spring Boot project.</li>
+      <li>Understand REST architecture.</li>
+      <li>Use the @RestController annotation.</li>
+      <li>Create GET and POST endpoints.</li>
+      <li>Test APIs using a browser or Postman.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Theory</h2>
+    <p>
+      Spring Boot is a Java framework used to build standalone, production-ready
+      applications quickly. A REST API allows communication between client and
+      server using HTTP methods. The @RestController annotation combines
+      @Controller and @ResponseBody so methods can return response data directly.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>HTTP Method</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>Retrieve data</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>Send new data</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>Update existing data</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>Remove data</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Algorithm</h2>
+    <ol>
+      <li>Start the Spring Boot project using Spring Initializr.</li>
+      <li>Add the Spring Web dependency.</li>
+      <li>Create the main application class.</li>
+      <li>Create a Student model class.</li>
+      <li>Create a StudentController class and annotate it with @RestController.</li>
+      <li>Create a GET endpoint to return a welcome message.</li>
+      <li>Create another GET endpoint to return student details.</li>
+      <li>Create a POST endpoint to accept student data.</li>
+      <li>Run the Spring Boot application.</li>
+      <li>Test endpoints using a browser or Postman and verify JSON responses.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Project Structure</h2>
+    <pre class="output">Experiment-11/
+  pom.xml
+  src/main/java/com/example/student/
+    Student.java
+    StudentController.java
+    StudentRestApiApplication.java</pre>
+  </section>
+
+  <section>
+    <h2>Program</h2>
+    <h3>Student.java</h3>
+    <pre class="code-block">package com.example.student;
+
+public class Student {
+    private int id;
+    private String name;
+    private String course;
+
+    public Student() {
+    }
+
+    public Student(int id, String name, String course) {
+        this.id = id;
+        this.name = name;
+        this.course = course;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+}</pre>
+
+    <h3>StudentController.java</h3>
+    <pre class="code-block">package com.example.student;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/")
+public class StudentController {
+    private Student student;
+
+    @GetMapping
+    public String welcomeMessage() {
+        return "Welcome to Student Management REST API";
+    }
+
+    @GetMapping("/student")
+    public ResponseEntity&lt;Student&gt; getStudent() {
+        if (student == null) {
+            return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity&lt;&gt;(student, HttpStatus.OK);
+    }
+
+    @PostMapping("/student")
+    public ResponseEntity&lt;Student&gt; createStudent(@RequestBody Student student) {
+        this.student = student;
+        return new ResponseEntity&lt;&gt;(student, HttpStatus.CREATED);
+    }
+}</pre>
+
+    <h3>StudentRestApiApplication.java</h3>
+    <pre class="code-block">package com.example.student;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class StudentRestApiApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(StudentRestApiApplication.class, args);
+    }
+}</pre>
+  </section>
+
+  <section>
+    <h2>API Testing</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>URL</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>http://localhost:8080/</td>
+          <td>Display welcome message</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>http://localhost:8080/student</td>
+          <td>Display stored student details</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>http://localhost:8080/student</td>
+          <td>Accept student data</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>POST Body</h3>
+    <pre class="output">{
+  "id": 101,
+  "name": "Rahul Sharma",
+  "course": "B.Tech CSE"
+}</pre>
+  </section>
+
+  <section>
+    <h2>Expected Output</h2>
+    <pre class="output">GET http://localhost:8080/
+Welcome to Student Management REST API
+
+POST http://localhost:8080/student
+{
+  "id": 101,
+  "name": "Rahul Sharma",
+  "course": "B.Tech CSE"
+}
+
+GET http://localhost:8080/student
+{
+  "id": 101,
+  "name": "Rahul Sharma",
+  "course": "B.Tech CSE"
+}</pre>
+  </section>
+
+  <section>
+    <h2>Outcome</h2>
+    <p>
+      Students successfully created REST APIs using Spring Boot and implemented
+      GET and POST endpoints for managing student data.
+    </p>
+  </section>
+</main>
+</body>
+</html>
